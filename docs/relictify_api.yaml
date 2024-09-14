@@ -1,0 +1,124 @@
+openapi: "3.1.0"
+
+info:
+  version: "0.1"
+  title: "Relictify API"
+  description: "An API for Relictify. A tool to manage characters and relics in Honkai Star Rail."
+  contact:
+    name: Open Source Project
+    url: https://github.com/NekoDrone/relictify-api
+
+servers:
+  - url: http://foobar
+    description: "placeholder"
+
+paths:
+  /characters:
+    get:
+      summary: "get character details"
+      description: "returns data on all characters (if no parameter supplied)"
+      parameters:
+        - name: id
+          description: "unique identifier for character"
+          required: false
+          schema:
+            type: integer
+          example: "5"
+      responses:
+          200:
+            description: Character details response
+            content:
+              application/json:
+                schema:
+                  title: Response
+                  type: array
+                  properties: 
+                    results:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: unique identifier
+                          examples: [26]
+                        rarity:
+                          type: integer
+                          description: character rarity
+                          examples: [5]
+                        name:
+                          type: string
+                          description: name of character (unique)
+                          examples: [Dan Heng, Himeko]
+                        element:
+                          type: string
+                          description: combat element
+                          examples: [PHYSICAL]
+                          enum:
+                            - PHYSICAL
+                            - FIRE
+                            - ICE
+                            - LIGHTNING
+                            - WIND
+                            - QUANTUM
+                            - IMAGINARY
+                        path:
+                          type: string
+                          description: character path
+                          examples: [DESTRUCTION]
+                          enum:
+                            - DESTRUCTION
+                            - HUNT
+                            - ERUDITION
+                            - HARMONY
+                            - NIHILITY
+                            - PRESERVATION
+                            - ABUNDANCE
+                        startingHp:
+                          type: integer
+                          description: starting hit points
+                          examples: [120]
+                        startingAtk:
+                          type: integer
+                          description: starting attack
+                          examples: [70]
+                        startingDef:
+                          type: integer
+                          description: starting defense
+                          examples: [50]
+                        startingSpd:
+                          type: integer
+                          description: starting speed
+                          examples: [100]
+
+
+
+  /relics:
+    get:
+      summary: "get relic details"
+      description: "returns data on all relics (if no parameter supplied)"
+      parameters:
+        - name: id
+          description: "unique identifier for relic"
+          required: false
+          schema:
+            type: integer
+          example: "5"
+      responses:
+          200:
+            description: Relic details response
+            content:
+              application/json:
+                schema:
+                  title: Response
+                  type: array
+                  properties:
+                    results:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: unique identifier
+                          examples: [5]
+                        name:
+                          type: string
+                          description: name of relic
+                          examples: []
